@@ -14,14 +14,17 @@ enum BreedEndpoint: Endpoint {
     var path: String {
         switch self {
         case .getBreeds:
-            return "breed"
+            return "breeds"
         }
     }
     
     var urlParameters: [String : String] {
         switch self {
         case .getBreeds(let page?):
-            return ["page": String(page)]
+            return [
+                "limit": "10",
+                "page": String(page)
+                ]
         case .getBreeds:
             return [:]
         }

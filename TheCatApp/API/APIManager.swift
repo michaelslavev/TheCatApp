@@ -29,6 +29,7 @@ class APIManager: APIManaging {
         let httpResponse = response as? HTTPURLResponse
         
         debugPrint("Finished request: \(response)")
+
                 
         guard let status =  httpResponse?.statusCode, (200...299).contains(status) else {
             throw APIError.unaceptableStatusCode

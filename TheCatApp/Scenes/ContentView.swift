@@ -12,8 +12,7 @@ struct ContentView: View {
         
         TabView {
             NavigationView {
-                //CatBreedsListView(viewModel: CatBreedListViewModel())
-                CatBreedsListView()
+                CatBreedsListView(viewModel: CatBreedListViewModel())
             }
             .navigationViewStyle(StackNavigationViewStyle())
             .tabItem {

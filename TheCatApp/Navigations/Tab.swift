@@ -8,8 +8,8 @@
 import Foundation
 
 enum Tab: String, Hashable {
-    case characters
-    case episodes
-    case locations
+    case breeds
+    case images
+    case votes
     case likes
 }
