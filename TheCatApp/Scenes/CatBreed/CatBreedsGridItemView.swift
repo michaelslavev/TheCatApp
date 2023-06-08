@@ -11,17 +11,19 @@ struct CatBreedsGridItemView: View {
     let breed: CatBreed
     
     var body: some View {
-        AsyncImage(
-            url: breed.image?.url) { image in
-                image
-                    .resizable()
-                    //.scaledToFill()
-                    .frame(width: 115, height: 115)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    
-            } placeholder: {
-                ProgressView()
+        ZStack {
+            AsyncImage(
+                url: breed.image?.url) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 115, height: 115)
+                } placeholder: {
+                    ProgressView()
             }
+        }
+        .cornerRadius(8) // Necessary for working
+        .frame(width: 115, height: 115)
     }
 }
 

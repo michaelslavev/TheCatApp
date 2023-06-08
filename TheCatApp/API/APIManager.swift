@@ -26,6 +26,8 @@ class APIManager: APIManaging {
         
         let (data, response) = try await session.data(for: request)
         
+        debugPrint("Called request: \(request)")
+        
         let httpResponse = response as? HTTPURLResponse
         
         debugPrint("Finished request: \(response)")

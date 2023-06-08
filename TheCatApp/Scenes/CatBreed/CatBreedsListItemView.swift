@@ -12,15 +12,20 @@ struct CatBreedsListItemView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
-            AsyncImage(
-                url: breed.image?.url) { image in
-                    image
-                        .resizable()
-                        .frame(width: 110, height: 110)
-                        .cornerRadius(8)
-                } placeholder: {
-                    ProgressView()
+            ZStack {
+                AsyncImage(
+                    url: breed.image?.url) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 110, height: 110)
+                    } placeholder: {
+                        ProgressView()
                 }
+            }
+            .cornerRadius(8) // Necessary for working
+            .frame(width: 110, height: 110)
+            
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(breed.name)
