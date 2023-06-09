@@ -13,12 +13,18 @@ enum ImagesEndpoint: Endpoint {
     
     var path: String {
         switch self {
-        case .getImages(catId: let catId):
-            return "images/\(catId)"
+        case .getImages:
+            return "images/search"
         }
     }
     
     var urlParameters: [String : String] {
-        return [:]
+        switch self {
+        case .getImages(let id):
+            return [
+                "breed_ids": id,
+                "limit": "5"
+            ]
+        }
     }
 }

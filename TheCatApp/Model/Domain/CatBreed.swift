@@ -15,14 +15,14 @@ struct CatBreed: Decodable {
         case origin
         case country_code
         case description
+        case temperament
         case life_span
         case weight
         case child_friendly
         case dog_friendly
         case grooming
         case image
-        //case imagesUrl = "images"
-        case wikipedia_url = "wiki"
+        case wikipedia_url
     }
     
     let id: String
@@ -30,13 +30,13 @@ struct CatBreed: Decodable {
     let origin: String
     let country_code: String
     let description: String
+    let temperament: String
     let life_span: String
     let weight: Weight
     let child_friendly: Int
     let dog_friendly: Int
     let grooming: Int
     let image: CatImage?
-    //let imagesUrl: [URL]
     let wikipedia_url: URL?
     
 }
@@ -56,13 +56,14 @@ extension CatBreed {
         origin: "Egypt",
         country_code: "EG",
         description: "The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals.",
+        temperament: "aaaaaaa",
         life_span: "14 - 15",
         weight: .mock,
         child_friendly: 3,
         dog_friendly: 4,
         grooming: 1,
         image: .mock,
-        wikiUrl: URL(string: "https://en.wikipedia.org/wiki/Abyssinian_(cat)")!
+        wikipedia_url: URL(string: "https://en.wikipedia.org/wiki/Abyssinian_(cat)")!
     )
     
     static let catBreeds: [CatBreed] = {
@@ -73,13 +74,14 @@ extension CatBreed {
                 origin: "Egypt",
                 country_code: "EG",
                 description: "The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals.",
+                temperament: "aaaaaaa",
                 life_span: "14 - 15",
                 weight: .mock,
                 child_friendly: 3,
                 dog_friendly: 4,
                 grooming: 1,
                 image: .mock,
-                wikiUrl: URL(string: "https://en.wikipedia.org/wiki/Abyssinian_(cat)")!
+                wikipedia_url: URL(string: "https://en.wikipedia.org/wiki/Abyssinian_(cat)")!
             )
         }
     }()

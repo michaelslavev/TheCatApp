@@ -21,6 +21,7 @@ import Foundation
     var id: String?
     @Published var state: State = .initial
     @Published var breed: CatBreed?
+    @Published var images: [CatImage]?
     
     nonisolated init(id: String? = nil) {
         self.id = id
@@ -36,10 +37,13 @@ import Foundation
         do {
             
             let endpoint = BreedDetailEndpoint.getBreedDetail(catId: catId)
-            
             let response: CatBreed = try await apiManager.request(endpoint: endpoint)
             
+            let imagesEndpoint = ImagesEndpoint.getImages(catId: catId)
+            let imagesResponse: [CatImage] = try await apiManager.request(endpoint: imagesEndpoint)
+            
             breed = response
+            images = imagesResponse
             
             state = .fetched
         } catch {

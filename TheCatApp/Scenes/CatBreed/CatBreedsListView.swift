@@ -22,7 +22,7 @@ struct CatBreedsListView: View {
     func makeList() -> some View {
         LazyVStack(alignment: .leading, spacing: 12) {
             ForEach(viewModel.breeds) { breed in
-                NavigationLink(destination: CatBreedDetailView(viewModel: CatBreedDetailViewModel(id: breed.id))) {
+                NavigationLink(destination: CatBreedDetailView(breed: breed, viewModel: CatBreedDetailViewModel(id: breed.id))) {
                     CatBreedsListItemView(breed: breed)
                 }
                 .task {
@@ -36,7 +36,7 @@ struct CatBreedsListView: View {
     func makeGrid() -> some View {
         LazyVGrid(columns: gridItems, spacing: 10) {
             ForEach(viewModel.breeds) { breed in
-                NavigationLink(destination: CatBreedDetailView(viewModel: CatBreedDetailViewModel(id: breed.id))) {
+                NavigationLink(destination: CatBreedDetailView(breed: breed, viewModel: CatBreedDetailViewModel(id: breed.id))) {
                     CatBreedsGridItemView(breed: breed)
                 }
                 .task {

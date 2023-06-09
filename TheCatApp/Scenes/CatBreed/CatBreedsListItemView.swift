@@ -36,6 +36,7 @@ struct CatBreedsListItemView: View {
                 
                 makeInfoRow(title: breed.origin, iconName: "globe")
                 makeInfoRow(title: breed.life_span + " years", iconName: "bolt.heart.fill")
+                makeInfoRow(title: breed.weight.metric + " kg", iconName: "scalemass")
                 
             }
             .padding(.vertical, 16)
