@@ -16,6 +16,8 @@ import Foundation
         case failed
     }
     
+    @Injected private var apiManager: APIManaging
+    
     var id: String?
     @Published var state: State = .initial
     @Published var breed: CatBreed?
@@ -24,13 +26,35 @@ import Foundation
         self.id = id
     }
     
-    func fetch() async {
+    func load(catId: String) async {
         state = .loading
-     
-        try! await Task.sleep(for: .seconds(2))
+        await fetch(catId: catId)
+    }
+    
+    func fetch(catId: String) async {
         
-        state = .fetched
-        breed = CatBreed.mock
+        do {
+            
+            let endpoint = BreedDetailEndpoint.getBreedDetail(catId: catId)
+            
+            let response: CatBreed = try await apiManager.request(endpoint: endpoint)
+            
+            breed = response
+            
+            state = .fetched
+        } catch {
+            
+            if let error = error as? URLError, error.code == .cancelled {
+                Logger.log("URL request was cancelled", .info)
+                
+                state = .fetched
+                
+                return
+            }
+            
+            debugPrint(error)
+            state = .failed
+        }
     }
     
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum BreedEndpoint: Endpoint {
+enum BreedsEndpoint: Endpoint {
     
     case getBreeds(page: Int?)
     
@@ -26,7 +26,12 @@ enum BreedEndpoint: Endpoint {
                 "page": String(page)
                 ]
         case .getBreeds:
+//            return [
+//                "limit": "10",
+//                "page": "0"
+//            ]
             return [:]
+            
         }
         
     }

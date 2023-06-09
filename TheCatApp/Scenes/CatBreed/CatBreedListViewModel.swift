@@ -48,7 +48,7 @@ import Foundation
         
         do {
             
-            let endpoint = BreedEndpoint.getBreeds(page: page)
+            let endpoint = BreedsEndpoint.getBreeds(page: page)
             
             let response: [CatBreed] = try await apiManager.request(endpoint: endpoint)
             

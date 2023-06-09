@@ -22,7 +22,7 @@ struct CatBreed: Decodable {
         case grooming
         case image
         //case imagesUrl = "images"
-        case wikiUrl = "wiki"
+        case wikipedia_url = "wiki"
     }
     
     let id: String
@@ -37,7 +37,7 @@ struct CatBreed: Decodable {
     let grooming: Int
     let image: CatImage?
     //let imagesUrl: [URL]
-    let wikiUrl: URL?
+    let wikipedia_url: URL?
     
 }
 

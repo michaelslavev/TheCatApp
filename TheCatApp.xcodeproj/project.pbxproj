@@ -12,7 +12,7 @@
 		D0DEB9102A311492004981DC /* Satoshi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0DEB8E42A31148D004981DC /* Satoshi.ttf */; };
 		D0DEB9112A311492004981DC /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB8E62A31148E004981DC /* URL.swift */; };
 		D0DEB9122A311492004981DC /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB8E82A31148E004981DC /* APIError.swift */; };
-		D0DEB9132A311492004981DC /* BreedEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB8EA2A31148E004981DC /* BreedEndpoint.swift */; };
+		D0DEB9132A311492004981DC /* BreedsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB8EA2A31148E004981DC /* BreedsEndpoint.swift */; };
 		D0DEB9142A311492004981DC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB8EB2A31148E004981DC /* APIManager.swift */; };
 		D0DEB9152A311492004981DC /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB8EC2A31148E004981DC /* HTTPMethod.swift */; };
 		D0DEB9162A311492004981DC /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB8ED2A31148E004981DC /* HTTPHeader.swift */; };
@@ -50,6 +50,8 @@
 		D0DEB94A2A325150004981DC /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0DEB9492A325150004981DC /* SDWebImageMapKit */; };
 		D0DEB94D2A325189004981DC /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D0DEB94C2A325189004981DC /* SDWebImageSwiftUI */; };
 		D0DEB9582A326A1E004981DC /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB9572A326A1E004981DC /* Response.swift */; };
+		D0DEB95A2A3352E7004981DC /* BreedDetailEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB9592A3352E7004981DC /* BreedDetailEndpoint.swift */; };
+		D0DEB95C2A3360C5004981DC /* ImagesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB95B2A3360C5004981DC /* ImagesEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +62,7 @@
 		D0DEB8E42A31148D004981DC /* Satoshi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Satoshi.ttf; sourceTree = "<group>"; };
 		D0DEB8E62A31148E004981DC /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		D0DEB8E82A31148E004981DC /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
-		D0DEB8EA2A31148E004981DC /* BreedEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreedEndpoint.swift; sourceTree = "<group>"; };
+		D0DEB8EA2A31148E004981DC /* BreedsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreedsEndpoint.swift; sourceTree = "<group>"; };
 		D0DEB8EB2A31148E004981DC /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D0DEB8EC2A31148E004981DC /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		D0DEB8ED2A31148E004981DC /* HTTPHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
@@ -95,6 +97,8 @@
 		D0DEB93F2A3249E0004981DC /* NavigationRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationRoute.swift; sourceTree = "<group>"; };
 		D0DEB9412A3249E7004981DC /* NavigationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		D0DEB9572A326A1E004981DC /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		D0DEB9592A3352E7004981DC /* BreedDetailEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailEndpoint.swift; sourceTree = "<group>"; };
+		D0DEB95B2A3360C5004981DC /* ImagesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +197,9 @@
 		D0DEB8E92A31148E004981DC /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
-				D0DEB8EA2A31148E004981DC /* BreedEndpoint.swift */,
+				D0DEB8EA2A31148E004981DC /* BreedsEndpoint.swift */,
+				D0DEB9592A3352E7004981DC /* BreedDetailEndpoint.swift */,
+				D0DEB95B2A3360C5004981DC /* ImagesEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 				D0DEB9272A311492004981DC /* Logger.swift in Sources */,
 				D0DEB91B2A311492004981DC /* ContentView.swift in Sources */,
 				D0DEB9582A326A1E004981DC /* Response.swift in Sources */,
+				D0DEB95A2A3352E7004981DC /* BreedDetailEndpoint.swift in Sources */,
 				D0DEB9292A311492004981DC /* Tab.swift in Sources */,
 				D0DEB93C2A324930004981DC /* Alignment+Custom.swift in Sources */,
 				D0DEB9142A311492004981DC /* APIManager.swift in Sources */,
@@ -417,6 +424,7 @@
 				D0DEB9182A311492004981DC /* Endpoint.swift in Sources */,
 				D0DEB93A2A32492A004981DC /* UINavigationController+BackButton.swift in Sources */,
 				D0DEB9232A311492004981DC /* Font+App.swift in Sources */,
+				D0DEB95C2A3360C5004981DC /* ImagesEndpoint.swift in Sources */,
 				D0DEB9112A311492004981DC /* URL.swift in Sources */,
 				D0DEB9382A324872004981DC /* OnFirstAppearViewModifier.swift in Sources */,
 				D0DEB9222A311492004981DC /* Color+App.swift in Sources */,
@@ -424,7 +432,7 @@
 				D0DEB9122A311492004981DC /* APIError.swift in Sources */,
 				D0DEB9152A311492004981DC /* HTTPMethod.swift in Sources */,
 				D0DEB9252A311492004981DC /* CatBreedListViewModel.swift in Sources */,
-				D0DEB9132A311492004981DC /* BreedEndpoint.swift in Sources */,
+				D0DEB9132A311492004981DC /* BreedsEndpoint.swift in Sources */,
 				D0DEB92D2A323FEA004981DC /* CatImage.swift in Sources */,
 				D0DEB9192A311492004981DC /* TheCatAppApp.swift in Sources */,
 				D0DEB9422A3249E7004981DC /* NavigationRouter.swift in Sources */,

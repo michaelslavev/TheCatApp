@@ -25,7 +25,7 @@ extension CatImage: Equatable {}
 extension CatImage {
     static let mock: CatImage = .init(
         id: "0XYvRd7oD",
-        url: URL(string: "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg")!
+        url: URL(string: "https://upload.wikimedia.org/wikipedia/en/c/cf/Garfield_2.jpg")!
     )
 }
 #endif
