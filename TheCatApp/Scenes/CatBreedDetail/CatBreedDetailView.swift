@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SafariServices
 
 struct CatBreedDetailView: View {
     
+    @State var showSafari = false
     let breed: CatBreed
     @StateObject var viewModel: CatBreedDetailViewModel
     
@@ -103,6 +105,7 @@ private extension CatBreedDetailView {
         .padding(.horizontal, 8)
     }
     
+    
     func makeInfoRow(title: String, iconName: String) -> some View {
         HStack(alignment: .top, spacing: 8) {
             Image(systemName: iconName)
@@ -117,7 +120,15 @@ private extension CatBreedDetailView {
         HStack(alignment: .top, spacing: 8) {
             Image(systemName: iconName)
             
-            Link(title, destination: url)
+            
+            Button(action: {
+                self.showSafari = true
+            }) {
+                Text(title)
+            }
+            .sheet(isPresented: $showSafari) {
+                SafariView(url: url)
+            }
         }
         .font(.appItemDescription)
         .foregroundColor(.appTextBody)
@@ -138,6 +149,7 @@ private extension CatBreedDetailView {
     }
 }
 
+// MARK: - Visual rating from 0 to 5
 struct StarRating: View {
     struct ClipShape: Shape {
         let width: Double
@@ -177,6 +189,20 @@ struct StarRating: View {
             }
         )
     }
+}
+
+// MARK: - WebView
+struct SafariView: UIViewControllerRepresentable {
+    let url: URL
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<SafariView>) -> SFSafariViewController {
+        return SFSafariViewController(url: url)
+    }
+
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<SafariView>) {
+
+    }
+
 }
 
 

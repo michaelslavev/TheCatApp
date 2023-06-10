@@ -9,7 +9,7 @@ import Foundation
 
 extension URL {
     static func makeShareUrl(for path: String) -> URL? {
-        URL(string: "rickandmorty://strv.rickandmorty.com/\(path)")
+        URL(string: "rickandmorty://thecatapi.com/")
     }
     
     func valueOf(queryParameter: String) -> String? {
