@@ -22,6 +22,9 @@ struct CatBreed: Decodable {
     let grooming: Int
     let image: CatImage?
     let wikipedia_url: URL?
+    let hypoallergenic: Int
+    let intelligence: Int
+    let health_issues: Int
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -37,6 +40,9 @@ struct CatBreed: Decodable {
         case grooming
         case image
         case wikipedia_url
+        case hypoallergenic
+        case intelligence
+        case health_issues
     }
 }
 
@@ -52,6 +58,8 @@ extension CatBreed {
         
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         origin = try container.decode(String.self, forKey: .origin)
@@ -72,6 +80,9 @@ extension CatBreed {
         }
         
         wikipedia_url = try container.decodeIfPresent(URL.self, forKey: .wikipedia_url)
+        hypoallergenic = try container.decode(Int.self, forKey: .hypoallergenic)
+        intelligence = try container.decode(Int.self, forKey: .intelligence)
+        health_issues = try container.decode(Int.self, forKey: .health_issues)
     }
     
     
@@ -88,7 +99,10 @@ extension CatBreed {
         dog_friendly: 4,
         grooming: 1,
         image: .mock,
-        wikipedia_url: URL(string: "https://en.wikipedia.org/wiki/Abyssinian_(cat)")!
+        wikipedia_url: URL(string: "https://en.wikipedia.org/wiki/Abyssinian_(cat)")!,
+        hypoallergenic: 5,
+        intelligence: 3,
+        health_issues: 1
     )
     
     static let catBreeds: [CatBreed] = {
@@ -106,7 +120,10 @@ extension CatBreed {
                 dog_friendly: 4,
                 grooming: 1,
                 image: .mock,
-                wikipedia_url: URL(string: "https://en.wikipedia.org/wiki/Abyssinian_(cat)")!
+                wikipedia_url: URL(string: "https://en.wikipedia.org/wiki/Abyssinian_(cat)")!,
+                hypoallergenic: 5,
+                intelligence: 3,
+                health_issues: 1
             )
         }
     }()

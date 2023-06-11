@@ -90,9 +90,12 @@ private extension CatBreedDetailView {
                 .font(.appSectionTitle)
                 .foregroundColor(.appTextSectionTitle)
             VStack(alignment: .center, spacing: 8) {
+                makeRating(characteristic: "Intelligence", rating: breed.intelligence)
+                makeRating(characteristic: "Health issues", rating: breed.health_issues)
+                makeRating(characteristic: "Hypoallergenic", rating: breed.hypoallergenic)
+                makeRating(characteristic: "Grooming", rating: breed.grooming)
                 makeRating(characteristic: "Child friendly", rating: breed.child_friendly)
                 makeRating(characteristic: "Dog friendly", rating: breed.dog_friendly)
-                makeRating(characteristic: "Grooming", rating: breed.grooming)
             }
         }
         .padding(.horizontal, 8)
