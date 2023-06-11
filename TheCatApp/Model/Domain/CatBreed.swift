@@ -9,6 +9,20 @@ import Foundation
 
 struct CatBreed: Decodable {
     
+    let id: String
+    let name: String
+    let origin: String
+    let country_code: String
+    let description: String
+    let temperament: String
+    let life_span: String
+    let weight: Weight
+    let child_friendly: Int
+    let dog_friendly: Int
+    let grooming: Int
+    let image: CatImage?
+    let wikipedia_url: URL?
+    
     enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -24,21 +38,6 @@ struct CatBreed: Decodable {
         case image
         case wikipedia_url
     }
-    
-    let id: String
-    let name: String
-    let origin: String
-    let country_code: String
-    let description: String
-    let temperament: String
-    let life_span: String
-    let weight: Weight
-    let child_friendly: Int
-    let dog_friendly: Int
-    let grooming: Int
-    let image: CatImage?
-    let wikipedia_url: URL?
-    
 }
 
 
@@ -50,6 +49,32 @@ extension CatBreed: Equatable {}
 // MARK: - Mock
 #if DEBUG
 extension CatBreed {
+        
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        origin = try container.decode(String.self, forKey: .origin)
+        country_code = try container.decode(String.self, forKey: .country_code)
+        description = try container.decode(String.self, forKey: .description)
+        temperament = try container.decode(String.self, forKey: .temperament)
+        life_span = try container.decode(String.self, forKey: .life_span)
+        weight = try container.decode(Weight.self, forKey: .weight)
+        child_friendly = try container.decode(Int.self, forKey: .child_friendly)
+        dog_friendly = try container.decode(Int.self, forKey: .dog_friendly)
+        grooming = try container.decode(Int.self, forKey: .grooming)
+        
+        // Defaults possibly missing cat image to Garfield (mock) to keep UI ok
+        if let image = try container.decodeIfPresent(CatImage.self, forKey: .image) {
+            self.image = image
+        } else {
+            self.image = CatImage.mock
+        }
+        
+        wikipedia_url = try container.decodeIfPresent(URL.self, forKey: .wikipedia_url)
+    }
+    
+    
     static let mock: CatBreed = .init(
         id: "abys",
         name: "Abyssinian",
