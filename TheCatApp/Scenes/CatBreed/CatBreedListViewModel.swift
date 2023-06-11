@@ -17,7 +17,6 @@ import Foundation
     }
     
     @Injected private var apiManager: APIManaging
-    
     private var currentPage: Int = 0
     
     @Published var breeds: [CatBreed] = []
@@ -33,8 +32,6 @@ import Foundation
         let page = currentPage
         
         state = .fetched(loadingMore: true)
-        
-        
         
         await fetch(page: page)
     }

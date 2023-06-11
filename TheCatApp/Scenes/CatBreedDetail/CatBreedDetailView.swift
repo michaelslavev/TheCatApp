@@ -26,13 +26,9 @@ struct CatBreedDetailView: View {
                     case .loading:
                         ProgressView()
                     case .fetched:
-                        if let images = viewModel.images {
-                            makeImage(url: images[0].url)
-                        }
                         if let breed = viewModel.breed {
                             makeInfo(breed: breed)
                         }
-                        
                     case .failed:
                         Text("Sorry character fetch failed")
                     }
@@ -52,20 +48,17 @@ struct CatBreedDetailView: View {
 private extension CatBreedDetailView {
     
     
-    func makeImage(url: URL?) -> some View {
-        AsyncImage(url: url) { image in
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-        } placeholder: {
-            ProgressView()
-        }
-        .frame(maxWidth: .infinity)
+    func makeSlideShow(images: [CatImage]) -> some View {
+        ImageSlider(images)
+            .cornerRadius(16)
     }
     
     func makeInfo(breed: CatBreed) -> some View {
         VStack(alignment: .leading, spacing: 8) {
+            if let images = viewModel.images {
+                makeSlideShow(images: images)
+            }
+            
             Text("Info")
                 .font(.appSectionTitle)
                 .foregroundColor(.appTextSectionTitle)

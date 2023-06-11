@@ -23,7 +23,7 @@ enum ImagesEndpoint: Endpoint {
         case .getImages(let id):
             return [
                 "breed_ids": id,
-                "limit": "5"
+                "limit": "8"
             ]
         }
     }

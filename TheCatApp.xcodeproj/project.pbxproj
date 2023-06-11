@@ -52,6 +52,7 @@
 		D0DEB9582A326A1E004981DC /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB9572A326A1E004981DC /* Response.swift */; };
 		D0DEB95A2A3352E7004981DC /* BreedDetailEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB9592A3352E7004981DC /* BreedDetailEndpoint.swift */; };
 		D0DEB95C2A3360C5004981DC /* ImagesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB95B2A3360C5004981DC /* ImagesEndpoint.swift */; };
+		D0DEB95E2A355242004981DC /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEB95D2A355242004981DC /* ImageSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		D0DEB9572A326A1E004981DC /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		D0DEB9592A3352E7004981DC /* BreedDetailEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailEndpoint.swift; sourceTree = "<group>"; };
 		D0DEB95B2A3360C5004981DC /* ImagesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesEndpoint.swift; sourceTree = "<group>"; };
+		D0DEB95D2A355242004981DC /* ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +323,7 @@
 			children = (
 				D0DEB92F2A324386004981DC /* CatBreedDetailView.swift */,
 				D0DEB9352A32464A004981DC /* CatBreedDetailViewModel.swift */,
+				D0DEB95D2A355242004981DC /* ImageSlider.swift */,
 			);
 			path = CatBreedDetail;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				D0DEB91E2A311492004981DC /* PaginationInfo.swift in Sources */,
 				D0DEB9362A32464A004981DC /* CatBreedDetailViewModel.swift in Sources */,
 				D0DEB91D2A311492004981DC /* Constants.swift in Sources */,
+				D0DEB95E2A355242004981DC /* ImageSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

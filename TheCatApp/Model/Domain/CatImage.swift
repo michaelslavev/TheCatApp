@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CatImage: Decodable {
+public struct CatImage: Decodable {
     let id: String
     let url: URL
     
