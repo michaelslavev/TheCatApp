@@ -52,6 +52,8 @@ import Foundation
             let response: [CatBreed] = try await apiManager.request(endpoint: endpoint)
             
             breeds += response
+            breeds = breeds.sorted { $0.name < $1.name }
+
             
             state = .fetched(loadingMore: false)
             currentPage += 1
