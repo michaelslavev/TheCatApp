@@ -26,10 +26,6 @@ enum BreedsEndpoint: Endpoint {
                 "page": String(page)
                 ]
         case .getBreeds:
-//            return [
-//                "limit": "10",
-//                "page": "0"
-//            ]
             return [:]
             
         }

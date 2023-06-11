@@ -18,7 +18,7 @@ import Foundation
     
     @Injected private var apiManager: APIManaging
     
-    private var currentPage: Int? = nil
+    private var currentPage: Int = 0
     
     @Published var breeds: [CatBreed] = []
     @Published var state: State = .initial
@@ -30,9 +30,11 @@ import Foundation
             return
         }
         
-        let page = currentPage ?? 0
+        let page = currentPage
         
         state = .fetched(loadingMore: true)
+        
+        
         
         await fetch(page: page)
     }
@@ -44,7 +46,7 @@ import Foundation
     }
     
     
-    func fetch(page: Int? = nil) async {
+    func fetch(page: Int? = 0) async {
         
         do {
             
@@ -55,6 +57,7 @@ import Foundation
             breeds += response
             
             state = .fetched(loadingMore: false)
+            currentPage += 1
         } catch {
             
             if let error = error as? URLError, error.code == .cancelled {
