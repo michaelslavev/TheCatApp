@@ -10,6 +10,7 @@ import SwiftUI
 struct CatBreedsListItemView: View {
     let breed: CatBreed
     
+    // MARK: - Building View
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
             ZStack {
@@ -43,7 +44,7 @@ struct CatBreedsListItemView: View {
         }
     }
     
-    
+    // MARK: - Functions
     func makeInfoRow(title: String, iconName: String) -> some View {
         HStack(alignment: .top, spacing: 8) {
             Image(systemName: iconName)

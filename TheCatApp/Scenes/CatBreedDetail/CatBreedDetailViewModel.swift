@@ -9,13 +9,6 @@ import Foundation
 
 @MainActor final class CatBreedDetailViewModel: ObservableObject {
     
-    enum State {
-        case initial
-        case loading
-        case fetched
-        case failed
-    }
-    
     @Injected private var apiManager: APIManaging
     
     var id: String?
@@ -27,6 +20,15 @@ import Foundation
         self.id = id
     }
     
+    // MARK: - Enum definitions
+    enum State {
+        case initial
+        case loading
+        case fetched
+        case failed
+    }
+    
+    // MARK: - API call handling
     func load(catId: String) async {
         state = .loading
         await fetch(catId: catId)

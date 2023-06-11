@@ -10,7 +10,6 @@ import SwiftUI
 struct CatBreedsListView: View {
     
     @StateObject var viewModel = CatBreedListViewModel()
-    
     @State private var displayMode: DisplayMode = .list
     
     let gridItems: [GridItem] = [
@@ -19,34 +18,7 @@ struct CatBreedsListView: View {
         GridItem(.flexible(), spacing: 10)
     ]
     
-    func makeList() -> some View {
-        LazyVStack(alignment: .leading, spacing: 12) {
-            ForEach(viewModel.breeds) { breed in
-                NavigationLink(destination: CatBreedDetailView(breed: breed, viewModel: CatBreedDetailViewModel(id: breed.id))) {
-                    CatBreedsListItemView(breed: breed)
-                }
-                .task {
-                    await viewModel.fetchMoreIfNeeded(for: breed)
-                }
-            }
-        }
-        .padding(.horizontal, 16)
-    }
-    
-    func makeGrid() -> some View {
-        LazyVGrid(columns: gridItems, spacing: 10) {
-            ForEach(viewModel.breeds) { breed in
-                NavigationLink(destination: CatBreedDetailView(breed: breed, viewModel: CatBreedDetailViewModel(id: breed.id))) {
-                    CatBreedsGridItemView(breed: breed)
-                }
-                .task {
-                    await viewModel.fetchMoreIfNeeded(for: breed)
-                }
-            }
-        }
-        .padding(.horizontal, 10)
-    }
-    
+    // MARK: - Building view
     var body: some View {
         ZStack {
             BackgroundGradientView()
@@ -73,12 +45,22 @@ struct CatBreedsListView: View {
         }
         .navigationTitle("Cat Breeds")
         .toolbar {
+            // Display mode toggle
             ToolbarItem {
                 Button {
                     toggleDisplayMode()
                 } label: {
                     displayMode.image
                 }
+            }
+            
+            // Sorting options
+            ToolbarItem {
+                Menu {
+                    makeSortOptionButtons()
+                } label: {
+                    Label("Sort", systemImage: "slider.horizontal.3")
+                } .menuOrder(.fixed)
             }
         }.onFirstAppear {
             Task {
@@ -87,14 +69,61 @@ struct CatBreedsListView: View {
         }
     }
     
+    // MARK: - Functions
     func toggleDisplayMode() {
         withAnimation {
             displayMode.toggle()
         }
     }
+    
+    func makeList() -> some View {
+        LazyVStack(alignment: .leading, spacing: 12) {
+            ForEach(viewModel.breeds) { breed in
+                NavigationLink(destination: CatBreedDetailView(
+                    breed: breed, viewModel: CatBreedDetailViewModel(id: breed.id))) {
+                    CatBreedsListItemView(breed: breed)
+                }
+                .task {
+                    await viewModel.fetchMoreIfNeeded(for: breed)
+                }
+            }
+        }
+        .padding(.horizontal, 16)
+    }
+    
+    func makeGrid() -> some View {
+        LazyVGrid(columns: gridItems, spacing: 10) {
+            ForEach(viewModel.breeds) { breed in
+                NavigationLink(destination: CatBreedDetailView(breed: breed, viewModel: CatBreedDetailViewModel(id: breed.id))) {
+                    CatBreedsGridItemView(breed: breed)
+                }
+                .task {
+                    await viewModel.fetchMoreIfNeeded(for: breed)
+                }
+            }
+        }
+        .padding(.horizontal, 10)
+    }
+    
+    // Fill menu with sort option buttons
+    func makeSortOptionButtons() -> some View {
+        ForEach(CatBreedListViewModel.SortOption.allCases) { option in
+            Button(action: {
+                viewModel.sortOption = option
+                viewModel.sortCatBreeds(sort: option)
+            }) {
+                HStack {
+                    if viewModel.sortOption == option {
+                        Image(systemName: "checkmark")
+                    }
+                    Text(String(describing: option))
+                }
+            }
+        }
+    }
 }
 
-
+// MARK: - View extension
 extension CatBreedsListView {
     enum DisplayMode {
         case list

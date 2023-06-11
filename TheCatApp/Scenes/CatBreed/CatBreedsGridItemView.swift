@@ -10,6 +10,7 @@ import SwiftUI
 struct CatBreedsGridItemView: View {
     let breed: CatBreed
     
+    // MARK: - Building View
     var body: some View {
         ZStack {
             AsyncImage(

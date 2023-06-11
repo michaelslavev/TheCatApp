@@ -9,11 +9,13 @@ import SwiftUI
 import SafariServices
 
 struct CatBreedDetailView: View {
+    let breed: CatBreed
     
     @State var showSafari = false
-    let breed: CatBreed
     @StateObject var viewModel: CatBreedDetailViewModel
     
+    
+    // MARK: - Build View
     var body: some View {
         ZStack(alignment: .topLeading) {
             BackgroundGradientView()
@@ -45,8 +47,8 @@ struct CatBreedDetailView: View {
     }
 }
 
+// MARK: - View extension
 private extension CatBreedDetailView {
-    
     
     func makeSlideShow(images: [CatImage]) -> some View {
         ImageSlider(images)
@@ -101,7 +103,6 @@ private extension CatBreedDetailView {
         .padding(.horizontal, 8)
     }
     
-    
     func makeInfoRow(title: String, iconName: String) -> some View {
         HStack(alignment: .top, spacing: 8) {
             Image(systemName: iconName)
@@ -145,7 +146,7 @@ private extension CatBreedDetailView {
     }
 }
 
-// MARK: - Visual rating from 0 to 5
+// MARK: - Visual star rating
 struct StarRating: View {
     struct ClipShape: Shape {
         let width: Double

@@ -22,7 +22,7 @@ enum BreedsEndpoint: Endpoint {
         switch self {
         case .getBreeds(let page?):
             return [
-                "limit": "10",
+                "limit": "20",
                 "page": String(page)
                 ]
         case .getBreeds:
